@@ -2,3 +2,4 @@
 .idea/*
 nodemodules/
 target/
+egg-coder-api/.idea/
