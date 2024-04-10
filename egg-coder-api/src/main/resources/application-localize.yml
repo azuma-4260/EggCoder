@@ -1,0 +1,13 @@
+debug: false
+
+logging:
+  level:
+    com:
+      spring:
+        ibatis: debug
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/egg_coder
+    username: egg_coder
+    password: password
