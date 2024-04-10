@@ -1,8 +1,10 @@
 package com.github.azuma4260.controller.entity;
 
+import com.github.azuma4260.model.Record;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 
 public class CERecord {
@@ -38,6 +40,12 @@ public class CERecord {
     private String modelAnswer;
     private String comment;
     private Boolean reviewFlag;
+
+    public Record toRecord() {
+      return Record.builder().id(UUID.randomUUID()).title(title).question(question)
+          .userAnswer(userAnswer).modelAnswer(modelAnswer).comment(comment).reviewFlag(reviewFlag)
+          .build();
+    }
   }
 
   @Data
@@ -55,6 +63,12 @@ public class CERecord {
     private String modelAnswer;
     private String comment;
     private Boolean reviewFlag;
+
+    public Record toRecord() {
+      return Record.builder().id(UUID.fromString(id)).title(title).question(question)
+          .userAnswer(userAnswer).modelAnswer(modelAnswer).comment(comment).reviewFlag(reviewFlag)
+          .build();
+    }
   }
 
   @Data
@@ -82,6 +96,13 @@ public class CERecord {
     private String modelAnswer;
     private String comment;
     private Boolean reviewFlag;
+
+    public static Entity from(Record record) {
+      return Entity.builder().id(record.getId()).title(record.getTitle())
+          .question(record.getQuestion()).userAnswer(record.getUserAnswer())
+          .modelAnswer(record.getModelAnswer()).comment(record.getComment())
+          .reviewFlag(record.getReviewFlag()).build();
+    }
   }
 
 
