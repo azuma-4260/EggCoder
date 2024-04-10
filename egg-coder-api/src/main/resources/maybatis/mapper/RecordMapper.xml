@@ -1,0 +1,90 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.github.azuma4260.mapper.RecordMapper">
+    <resultMap id="recordResultMap" type="com.github.azuma4260.model.Record">
+        <id property="id" column="id" />
+        <result property="title" column="title"/>
+        <result property="question" column="question"/>
+        <result property="userAnswer" column="user_answer"/>
+        <result property="modelAnswer" column="model_answer"/>
+        <result property="comment" column="comment"/>
+        <result property="reviewFlag" column="review_flag"/>
+    </resultMap>
+
+    <sql id="select">
+        select
+            id_record,
+            title,
+            question,
+            user_answer,
+            model_answer,
+            comment,
+            review_flag
+        from egg_coder.RECORDS
+    </sql>
+
+    <select id="selectByPk" resultMap="recordResultMap">
+        <include refid="select"/>
+        where id_record = #{id}
+    </select>
+
+    <select id="search" resultMap="recordResultMap">
+        <include refid="select"/>
+        limit #{limit} offset #{offset}
+    </select>
+
+    <insert id="insert">
+        insert into egg_coder.RECORDS(id_record,
+                                      title,
+                                      question,
+                                      user_answer,
+                                      model_answer,
+                                      comment,
+                                      review_flag,
+                                      created_by,
+                                      updated_by)
+        VALUES (#{record.id},
+                #{record.title},
+                #{record.question},
+                #{record.user_answer},
+                #{record.model_answer},
+                #{record.comment},
+                #{record.review_flag},
+                #{operator.code},
+                #{operator.code})
+    </insert>
+
+    <update id="update">
+        update egg_coder.RECORDS
+        set
+        <include refid="Common.update"/>
+        <if test="record.title != null and record.title != ''">
+            , title = #{record.title}
+        </if>
+        <if test="record.question != null and record.question != ''">
+            , question = #{record.question}
+        </if>
+        <if test="record.user_answer != null and record.user_answer != ''">
+            , user_answer = #{record.user_answer}
+        </if>
+        <if test="record.model_answer != null and record.model_answer != ''">
+            , model_answer = #{record.model_answer}
+        </if>
+        <if test="record.comment != null and record.comment != ''">
+            , comment = #{record.comment}
+        </if>
+        <if test="record.review_flag != null">
+            , review_flag = #{record.review_flag}
+        </if>
+        where id_record = #{record.id}
+    </update>
+
+    <update id="delete">
+        <include refid="Common.delete">
+            <property name="table" value="egg_coder.RECORDS"/>
+            <property name="condition" value="id_records = #{id}"/>
+        </include>
+    </update>
+</mapper>
