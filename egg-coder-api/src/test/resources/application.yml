@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    group:
+      test:
+        - base
+        - base_test

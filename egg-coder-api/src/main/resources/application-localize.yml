@@ -8,6 +8,6 @@ logging:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/egg_coder
+    url: jdbc:mysql://localhost:3366/egg_coder
     username: egg_coder
     password: password
