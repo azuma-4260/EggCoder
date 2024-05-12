@@ -5,10 +5,12 @@ import com.github.azuma4260.mapper.RecordMapper;
 import com.github.azuma4260.model.Operator;
 import com.github.azuma4260.model.Record;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 @RequiredArgsConstructor
 public class RecordServiceImpl implements RecordService {
   private final RecordMapper recordMapper;

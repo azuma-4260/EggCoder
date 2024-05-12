@@ -3,10 +3,12 @@ package com.github.azuma4260.controller;
 import com.github.azuma4260.controller.entity.CERecord.*;
 import com.github.azuma4260.transaction.RecordTransaction;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.UUID;
 
+@RestController
 @RequiredArgsConstructor
 public class RecordControllerImpl extends EggCoderController implements RecordController {
   private final RecordTransaction recordTransaction;

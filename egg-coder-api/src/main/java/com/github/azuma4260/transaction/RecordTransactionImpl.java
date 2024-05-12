@@ -4,10 +4,12 @@ import com.github.azuma4260.controller.entity.CERecord;
 import com.github.azuma4260.model.Operator;
 import com.github.azuma4260.service.RecordService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.UUID;
 
+@Component
 @RequiredArgsConstructor
 public class RecordTransactionImpl implements RecordTransaction {
   private final RecordService recordService;

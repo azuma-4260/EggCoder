@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.UUID;
 
-@Service
 @Transactional(rollbackFor = Exception.class)
 public interface RecordTransaction {
   Entity getByPk(UUID uuid);

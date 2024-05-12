@@ -4,10 +4,12 @@ package com.github.azuma4260.mapper;
 import com.github.azuma4260.controller.entity.CERecord;
 import com.github.azuma4260.model.Operator;
 import com.github.azuma4260.model.Record;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 import java.util.UUID;
 
+@Mapper
 public interface RecordMapper {
   Record selectByPk(UUID id);
 
