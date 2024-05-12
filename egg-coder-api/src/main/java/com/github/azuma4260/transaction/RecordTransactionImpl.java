@@ -2,6 +2,7 @@ package com.github.azuma4260.transaction;
 
 import com.github.azuma4260.controller.entity.CERecord;
 import com.github.azuma4260.model.Operator;
+import com.github.azuma4260.model.Record;
 import com.github.azuma4260.service.RecordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,10 @@ public class RecordTransactionImpl implements RecordTransaction {
 
   @Override
   public CERecord.Entity getByPk(UUID uuid) {
+    Record record = recordService.getByPk(uuid);
+    if (record == null) {
+      return null;
+    }
     return CERecord.Entity.from(recordService.getByPk(uuid));
   }
 
