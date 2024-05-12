@@ -1,10 +1,12 @@
 # EggCoder
 
 ## Code formatting
-
+チェック
 ```bash
-# formatの実行
-$ ./mvnw formatter:format
-# チェック
-$ ./mvnw formatter:validate
+$ mvnw formatter:validate
+```
+
+フォーマットの実行
+```bash
+$ mvnw formatter:format
 ```
