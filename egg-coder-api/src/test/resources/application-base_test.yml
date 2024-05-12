@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: "jdbc:mysql://localhost:3367/egg_coder"
-    username: "egg_coder"
-    password: "password"
+    username: "admin"
+    password: "admin@123"
     driverClassName: com.mysql.cj.jdbc.Driver
     eggcoder:
       driverClassName: ${spring.datasource.driverClassName}

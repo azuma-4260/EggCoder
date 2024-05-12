@@ -2,13 +2,6 @@ spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
 
-#  thymeleaf:
-#    prefix: classpath:/templates/
-#    suffix: .html
-
-#  mvc:
-#    static-path-pattern: /resources/**
-
 server:
   port: 8080
   servlet:
@@ -17,6 +10,6 @@ server:
 
 mybatis:
   config-location: classpath:/mybatis-config.xml
-  mapper-locations: # Add path to mappers
-    #    - classpath:/mybatis/mapper/*.xml
+  mapper-locations:
     - classpath:/mybatis/mapper/*.xml
+    - classpath:/mybatis/*.xml
