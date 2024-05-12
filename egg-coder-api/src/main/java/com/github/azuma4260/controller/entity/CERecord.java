@@ -98,7 +98,7 @@ public class CERecord {
     private Boolean reviewFlag;
 
     public static Entity from(Record record) {
-      return Entity.builder().id(record.getId()).title(record.getTitle())
+      return Entity.builder().id(record.getId().toString()).title(record.getTitle())
           .question(record.getQuestion()).userAnswer(record.getUserAnswer())
           .modelAnswer(record.getModelAnswer()).comment(record.getComment())
           .reviewFlag(record.getReviewFlag()).build();
