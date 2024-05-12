@@ -4,7 +4,7 @@
 
 <mapper namespace="com.github.azuma4260.mapper.RecordMapper">
     <resultMap id="recordResultMap" type="com.github.azuma4260.model.Record">
-        <id property="id" column="id" />
+        <id property="id" column="id_record" />
         <result property="title" column="title"/>
         <result property="question" column="question"/>
         <result property="userAnswer" column="user_answer"/>
@@ -32,6 +32,7 @@
 
     <select id="search" resultMap="recordResultMap">
         <include refid="select"/>
+        order by updated_at desc
         limit #{limit} offset #{offset}
     </select>
 
