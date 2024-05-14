@@ -3,10 +3,10 @@
 ## Code formatting
 チェック
 ```bash
-$ mvnw formatter:validate
+$ .\mvnw formatter:validate
 ```
 
 フォーマットの実行
 ```bash
-$ mvnw formatter:format
+$ .\mvnw formatter:format
 ```
