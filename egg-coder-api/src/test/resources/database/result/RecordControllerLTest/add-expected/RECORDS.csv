@@ -1,0 +1,6 @@
+title,question,user_answer,model_answer,review_flag,comment,created_by,updated_by,deleted_at
+record1,question1,user_answer1,model_answer1,1,comment1,test,test,null
+record2,question2,user_answer2,model_answer2,0,comment2,test,test,null
+record3,question3,user_answer3,model_answer3,0,comment3,test,test,null
+record4,question4,user_answer4,model_answer4,0,comment4,test,test,null
+record5,question5,user_answer5,model_answer5,1,comment5,670254d1-70ec-1491-9a1f-92716f62f1dc,670254d1-70ec-1491-9a1f-92716f62f1dc,null

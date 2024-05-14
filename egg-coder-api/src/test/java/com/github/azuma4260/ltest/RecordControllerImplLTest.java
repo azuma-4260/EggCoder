@@ -1,9 +1,12 @@
 package com.github.azuma4260.ltest;
 
 import com.github.azuma4260.controller.entity.CERecord;
+import com.github.springtestdbunit.annotation.ExpectedDatabase;
+import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -30,7 +33,7 @@ public class RecordControllerImplLTest extends BaseControllerLTest {
   }
 
   @Test
-  @DisplayName("/api/record/search[正常系]")
+  @DisplayName("/api/record/search")
   void search() throws Exception {
     CERecord.Selector selector = CERecord.Selector.builder().limit(2).offset(1).build();
 
@@ -49,5 +52,43 @@ public class RecordControllerImplLTest extends BaseControllerLTest {
         .andExpect(jsonPath("$[1].modelAnswer").value("model_answer2"))
         .andExpect(jsonPath("$[1].comment").value("comment2"))
         .andExpect(jsonPath("$[1].reviewFlag").value("false"));
+  }
+
+  @Test
+  @DisplayName("/api/record/add")
+  @ExpectedDatabase(value = "/database/result/RecordControllerLTest/add-expected",
+      assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED)
+  void create() throws Exception {
+    CERecord.Create create =
+        CERecord.Create.builder().title("record5").question("question5").userAnswer("user_answer5")
+            .modelAnswer("model_answer5").comment("comment5").reviewFlag(Boolean.TRUE).build();
+
+    performPost("/api/record/add", create).andExpect(status().isOk())
+        .andExpect(jsonPath("$.succeeded").value("true"));
+  }
+
+  @Test
+  @DisplayName("/api/record/edit")
+  @ExpectedDatabase(value = "/database/result/RecordControllerLTest/edit-expected",
+      assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED)
+  void update() throws Exception {
+    CERecord.Update update = CERecord.Update.builder().id("b72489d4-7d72-046e-3d65-68ba51ccee91")
+        .title("record5").question("question5").userAnswer("user_answer5")
+        .modelAnswer("model_answer5").comment("comment5").reviewFlag(Boolean.TRUE).build();
+
+    performPost("/api/record/edit", update).andExpect(status().isOk())
+        .andExpect(jsonPath("$.succeeded").value("true"));
+  }
+
+  @Test
+  @DisplayName("/api/record/remove")
+  @ExpectedDatabase(value = "/database/result/RecordControllerLTest/delete-expected",
+      assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED)
+  void delete() throws Exception {
+    CERecord.Delete delete =
+        CERecord.Delete.builder().id("b72489d4-7d72-046e-3d65-68ba51ccee91").build();
+
+    performPost("/api/record/remove", delete).andExpect(status().isOk())
+        .andExpect(jsonPath("$.succeeded").value("true"));
   }
 }

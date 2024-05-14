@@ -1,0 +1,5 @@
+id_record,title,question,user_answer,model_answer,review_flag,comment,created_by,updated_by
+36c6bfa9-c99a-e396-47bb-8a83b20c31b3,record1,question1,user_answer1,model_answer1,1,comment1,test,test
+5b6d031c-043c-f086-0dc1-97d141776bfb,record2,question2,user_answer2,model_answer2,0,comment2,test,test
+b72489d4-7d72-046e-3d65-68ba51ccee91,record3,question3,user_answer3,model_answer3,0,comment3,test,670254d1-70ec-1491-9a1f-92716f62f1dc
+025d1008-95da-3c9c-18de-d9ac9ffc6112,record4,question4,user_answer4,model_answer4,0,comment4,test,test

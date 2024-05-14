@@ -8,6 +8,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.UUID;
+
 @RequestMapping("/api")
 public abstract class EggCoderController {
   private UserTransaction userTransaction;
@@ -20,7 +22,10 @@ public abstract class EggCoderController {
     }
 
     Object principal = authentication.getPrincipal();
-    User loginUser = userTransaction.getByName(((UserDetails) principal).getUsername());
+    // FIXME: loginUserを取得する処理を実装する
+    // User loginUser = userTransaction.getByName(((UserDetails) principal).getUsername());
+    User loginUser =
+        User.builder().id(UUID.fromString("670254d1-70ec-1491-9a1f-92716f62f1dc")).build();
     return Operator.fromUser(loginUser);
   }
 }

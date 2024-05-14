@@ -49,10 +49,10 @@
         VALUES (#{record.id},
                 #{record.title},
                 #{record.question},
-                #{record.user_answer},
-                #{record.model_answer},
+                #{record.userAnswer},
+                #{record.modelAnswer},
                 #{record.comment},
-                #{record.review_flag},
+                #{record.reviewFlag},
                 #{operator.code},
                 #{operator.code})
     </insert>
@@ -67,17 +67,17 @@
         <if test="record.question != null and record.question != ''">
             , question = #{record.question}
         </if>
-        <if test="record.user_answer != null and record.user_answer != ''">
-            , user_answer = #{record.user_answer}
+        <if test="record.userAnswer != null and record.userAnswer != ''">
+            , user_answer = #{record.userAnswer}
         </if>
-        <if test="record.model_answer != null and record.model_answer != ''">
-            , model_answer = #{record.model_answer}
+        <if test="record.modelAnswer != null and record.modelAnswer != ''">
+            , model_answer = #{record.modelAnswer}
         </if>
         <if test="record.comment != null and record.comment != ''">
             , comment = #{record.comment}
         </if>
-        <if test="record.review_flag != null">
-            , review_flag = #{record.review_flag}
+        <if test="record.reviewFlag != null">
+            , review_flag = #{record.reviewFlag}
         </if>
         where id_record = #{record.id}
     </update>
@@ -85,7 +85,7 @@
     <update id="delete">
         <include refid="Common.delete">
             <property name="table" value="egg_coder.RECORDS"/>
-            <property name="condition" value="id_records = #{id}"/>
+            <property name="condition" value="id_record = #{id}"/>
         </include>
     </update>
 </mapper>
