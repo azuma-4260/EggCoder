@@ -1,7 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import {Button, Typography} from "@mui/material";
+import {useState} from "react";
 
 function App() {
+  const [pushed, setPushed] = useState(false)
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +20,8 @@ function App() {
         >
           Learn React
         </a>
+        <Button variant={'contained'} onClick={()=>setPushed(!pushed)}>Button</Button>
+        {pushed && <Typography sx={{color: 'primary.main'}}>Pushed!!</Typography>}
       </header>
     </div>
   );
